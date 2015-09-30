@@ -5,7 +5,7 @@ A barebones Node.js app using [Express 4](http://expressjs.com/).
 This application supports the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-https://travis-ci.org/koalabears/koala-complete.svg?branch=master
+[![Build Status](https://travis-ci.org/koalabears/koala-complete.svg?branch=master)](https://travis-ci.org/koalabears/koala-complete)
 
 ## Running Locally
 
