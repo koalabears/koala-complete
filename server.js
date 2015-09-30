@@ -1,5 +1,6 @@
 var Server = (function() {
   var http = require('http');
+  var api = require("./apiQuery");
   var port= process.env.PORT || 3000;
   // var auto = require('./main.js');
   var fs = require('fs');
@@ -30,6 +31,8 @@ var Server = (function() {
     http.createServer(handler).listen(port);
 
     console.log('node http server listening on http://localhost:' + port);
+
+    api("hello");
   }
 
   return {
