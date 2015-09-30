@@ -10,7 +10,8 @@
     "codeclimate": "CODECLIMATE_REPO_TOKEN=467a1f1abf5d146cc384cf7567718ac7ab13f51f47f63dfb7798b5b1ba43136a codeclimate-test-reporter < ./coverage/lcov.info"
   },
   "dependencies": {
-    "codecov.io": "^0.1.6"
+    "codecov.io": "^0.1.6",
+    "env2": "^2.0.2"
   },
   "repository": {
     "type": "git",
@@ -30,8 +31,10 @@
     "shot": "^1.6.1",
     "tape": "^4.2.0"
   },
+
   "pre-commit": [
     "coverage",
     "codeclimate"
   ]
+
 }

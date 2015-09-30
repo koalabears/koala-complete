@@ -1,8 +1,10 @@
 var Server = (function() {
   var http = require('http');
+  var api = require("./apiQuery");
+  var port= process.env.PORT || 3000;
+  // var auto = require('./main.js');
   var fs = require('fs');
 
-  var port = process.env.PORT || 3000;
 
   var index = fs.readFileSync(__dirname + '/public/html/index.html');
 
@@ -21,7 +23,7 @@ var Server = (function() {
   }
 
   function serveTest(req, res) {
-    console.log("serveTest called")
+    console.log("serveTest called");
     var test  = fs.readFileSync(__dirname + '/tests/front-end/test.html');
     var testjs  = fs.readFileSync(__dirname + '/tests/front-end/test.js');
     if (req.url === "/test.html/"){
@@ -40,6 +42,8 @@ var Server = (function() {
     http.createServer(handler).listen(port);
 
     console.log('node http server listening on http://localhost:' + port);
+
+    api("hello");
   }
 
   return {
