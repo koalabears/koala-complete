@@ -8,18 +8,30 @@ var Server = (function() {
 
   var index = fs.readFileSync(__dirname + '/public/html/index.html');
 
-  function handler(request,response){
-    var url = request.url;
-    console.log("request.url:", url);
+  function handler(req,res){
+    var url = req.url;
+    console.log("req.url:", url);
+
     if (url.match(/^(\/test)/)) {
-      serveTest(request, response);
+      serveTest(req, res);
     } else if (url.length === 1){
-      response.writeHead(200, {"Content-Type":"text/html"});
-      response.end(index.toString());
+      res.writeHead(200, {"Content-Type":"text/html"});
+      res.end(index.toString());
+    } else if (url.match(/^(\/find\/:)/)){
+      wordSearchCatch(req, res);
     } else {
-      response.writeHead(404, {"Content-Type":"text/javascript"});
-      response.end("error: " + request.url + " not found");
+      res.writeHead(404, {"Content-Type":"text/javascript"});
+      res.end("error: " + req.url + " not found");
     }
+  }
+
+  function wordSearchCatch(req, res){
+    // var queryCharNum = 7;
+    console.log(req.url);
+    res.writeHead(200, {"Content-Type":"text/plain"});
+    var name = req.url.split(':')[1];
+    console.log(name);
+    res.end(name);
   }
 
   function serveTest(req, res) {
