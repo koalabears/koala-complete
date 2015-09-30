@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/tape ./tests/back-end/*",
-    "coverage": "istanbul cover tape ./tests/back-end/*",
+    "coverage": "istanbul cover -x **/tests/** tape ./tests/back-end/*",
     "start": "node index.js",
     "codeclimate": "CODECLIMATE_REPO_TOKEN=467a1f1abf5d146cc384cf7567718ac7ab13f51f47f63dfb7798b5b1ba43136a codeclimate-test-reporter < ./coverage/lcov.info"
   },
@@ -25,12 +25,11 @@
     "codeclimate-test-reporter": "^0.1.1",
     "codecov.io": "^0.1.6",
     "istanbul": "^0.3.21",
+    "nodemon": "^1.7.1",
     "pre-commit": "^1.1.1",
     "shot": "^1.6.1",
     "tape": "^4.2.0"
   },
   "pre-commit": [
-    "coverage",
-    "codeclimate"
   ]
 }
