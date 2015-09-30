@@ -15,8 +15,7 @@
   },
   "keywords": [
     "node",
-    "heroku",
-    "express"
+    "heroku"
   ],
   "license": "MIT",
   "devDependencies": {
