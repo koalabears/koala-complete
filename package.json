@@ -4,10 +4,12 @@
   "description": "A sample Node.js app using Express 4",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/tape ./tests/server-test.js",
-    "coverage": "istanbul cover tape ./tests/server-test.js",
+
+    "test": "./node_modules/.bin/tape ./tests/back-end/*",
+    "coverage": "istanbul cover tape ./tests/back-end/*",
     "start": "node index.js",
     "codeclimate": "CODECLIMATE_REPO_TOKEN=467a1f1abf5d146cc384cf7567718ac7ab13f51f47f63dfb7798b5b1ba43136a codeclimate-test-reporter < ./coverage/lcov.info"
+
   },
   "dependencies": {},
   "repository": {
@@ -27,8 +29,9 @@
     "tape": "^4.2.0"
   },
   "pre-commit": [
-    "test",
+
     "coverage",
     "codeclimate"
+
   ]
 }
