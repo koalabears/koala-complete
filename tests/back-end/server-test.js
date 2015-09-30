@@ -1,6 +1,6 @@
 var shot = require('shot');
 var test = require('tape');
-var server = require('../server.js');
+var server = require('../../server.js');
 
 
 test("server returns the home page", function (t){
