@@ -3,7 +3,7 @@ var Server = (function() {
   var port= process.env.PORT || 3000;
   // var auto = require('./main.js');
   var fs = require('fs');
-  var index = fs.readFileSync(__dirname + '/index.html');
+  var index = fs.readFileSync(__dirname + '/public/html/index.html');
 
 
   function handler(request,response){
