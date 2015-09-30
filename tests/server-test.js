@@ -8,7 +8,7 @@ test("server returns the home page", function (t){
     method: "GET",
     url: "/"
   };
-  shot.inject(server, request, function(res){
+  shot.inject(server.handler, request, function(res){
     t.equal(res.statusCode, 200, "success!");
     t.end();
   });
