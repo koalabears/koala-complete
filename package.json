@@ -31,5 +31,7 @@
     "tape": "^4.2.0"
   },
   "pre-commit": [
+    "coverage",
+    "codeclimate"
   ]
 }
