@@ -7,6 +7,8 @@ This application supports the [Getting Started with Node on Heroku](https://devc
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 [![Build Status](https://travis-ci.org/koalabears/koala-complete.svg?branch=master)](https://travis-ci.org/koalabears/koala-complete)
 [![Code Climate](https://codeclimate.com/github/koalabears/koala-complete/badges/gpa.svg)](https://codeclimate.com/github/koalabears/koala-complete)
+[![Test Coverage](https://codeclimate.com/github/koalabears/koala-complete/badges/coverage.svg)](https://codeclimate.com/github/koalabears/koala-complete/coverage)
+[![codecov.io](http://codecov.io/github/koalabears/koala-complete/coverage.svg?branch=master)](http://codecov.io/github/koalabears/koala-complete?branch=master)
 
 ## Running Locally
 
