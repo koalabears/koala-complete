@@ -1,16 +1,28 @@
 var Server = (function() {
   var http = require('http');
-  var port= process.env.PORT || 3000;
-  // var auto = require('./main.js');
   var fs = require('fs');
-  var index = fs.readFileSync(__dirname + '/public/html/index.html');
-  var test  = fs.readFileSync(__dirname + '/tests/front-end/test.html');
-  var testjs  = fs.readFileSync(__dirname + '/tests/front-end/test.js');
 
+  var port = process.env.PORT || 3000;
+
+  var index = fs.readFileSync(__dirname + '/public/html/index.html');
 
   function handler(request,response){
     var url = request.url;
     console.log("request.url:", url);
+    if (url.match(/^(test)/)) {
+      serveTest(request, response);
+    } else if (url.length === 1){
+      response.writeHead(200, {"Content-Type":"text/html"});
+      response.end(index.toString());
+    } else {
+      response.writeHead(404, {"Content-Type":"text/javascript"});
+      response.end("error: file not found");
+    }
+  }
+
+  function serveTest(req, res) {
+    var test  = fs.readFileSync(__dirname + '/tests/front-end/test.html');
+    var testjs  = fs.readFileSync(__dirname + '/tests/front-end/test.js');
     if (url === "/test.html/"){
       // console.log("test.html served");
       response.writeHead(200, {"Content-Type":"text/html"});
@@ -18,14 +30,11 @@ var Server = (function() {
     } else if (url === "/test.html/test.js"){
       response.writeHead(200, {"Content-Type":"text/javascript"});
       response.end(testjs.toString());
-    } else if (url.length === 1){
-      response.writeHead(200, {"Content-Type":"text/html"});
-      response.end(index.toString());
     } else {
-      response.end("URL IS MORE THAN 1");
+      response.writeHead(404, {"Content-Type":"text/javascript"});
+      response.end("error: test not found");
     }
   }
-
   function startServer() {
     http.createServer(handler).listen(port);
 
