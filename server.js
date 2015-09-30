@@ -15,9 +15,21 @@ var Server = (function() {
       response.writeHead(200, {"Content-Type":"text/html"});
       response.end(index.toString());
     } else {
-      response.writeHead(404, {"Content-Type":"text/javascript"});
-      response.end("error: " + request.url + " not found");
+      console.log("!")
+      serveFromPublic(req, res);
     }
+  }
+
+  function serveFromPublic(req, res) {
+    var url = req.url;
+    var type = url.split('.')[1];
+    switch (type) {
+      case 'js' :
+      response.writeHead(200, {"Content-Type":"text/javascript"});
+      out = fs.readFileSync(__dirname + '/public/js' + url);
+      response.end(index.toString());
+    }
+
   }
 
   function serveTest(req, res) {
