@@ -31,5 +31,10 @@
     "shot": "^1.6.1",
     "tape": "^4.2.0"
   },
-  "pre-commit": []
+
+  "pre-commit": [
+    "coverage",
+    "codeclimate"
+  ]
+
 }

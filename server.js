@@ -4,29 +4,40 @@ var Server = (function() {
   var port= process.env.PORT || 3000;
   // var auto = require('./main.js');
   var fs = require('fs');
-  var index = fs.readFileSync(__dirname + '/public/html/index.html');
-  var test  = fs.readFileSync(__dirname + '/tests/front-end/test.html');
-  var testjs  = fs.readFileSync(__dirname + '/tests/front-end/test.js');
 
+
+  var index = fs.readFileSync(__dirname + '/public/html/index.html');
 
   function handler(request,response){
     var url = request.url;
     console.log("request.url:", url);
-    if (url === "/test.html/"){
-      // console.log("test.html served");
-      response.writeHead(200, {"Content-Type":"text/html"});
-      response.end(test.toString());
-    } else if (url === "/test.html/test.js"){
-      response.writeHead(200, {"Content-Type":"text/javascript"});
-      response.end(testjs.toString());
+    if (url.match(/^(\/test)/)) {
+      serveTest(request, response);
     } else if (url.length === 1){
       response.writeHead(200, {"Content-Type":"text/html"});
       response.end(index.toString());
     } else {
-      response.end("URL IS MORE THAN 1");
+      response.writeHead(404, {"Content-Type":"text/javascript"});
+      response.end("error: " + request.url + " not found");
     }
   }
 
+  function serveTest(req, res) {
+    console.log("serveTest called");
+    var test  = fs.readFileSync(__dirname + '/tests/front-end/test.html');
+    var testjs  = fs.readFileSync(__dirname + '/tests/front-end/test.js');
+    if (req.url === "/test.html/"){
+      // console.log("test.html served");
+      res.writeHead(200, {"Content-Type":"text/html"});
+      res.end(test.toString());
+    } else if (req.url === "/test.html/test.js"){
+      res.writeHead(200, {"Content-Type":"text/javascript"});
+      res.end(testjs.toString());
+    } else {
+      res.writeHead(404, {"Content-Type":"text/javascript"});
+      res.end("error: " + req.url + " not found");
+    }
+  }
   function startServer() {
     http.createServer(handler).listen(port);
 
