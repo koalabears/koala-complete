@@ -4,10 +4,11 @@
   "description": "A sample Node.js app using Express 4",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "test": "./node_modules/.bin/tape ./tests/server-test.js",
+    "coverage": "istanbul cover tape ./tests/server-test.js  && istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
+    "start": "node server.js"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/heroku/node-js-getting-started"
@@ -17,5 +18,14 @@
     "heroku",
     "express"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "pre-commit": "^1.1.1",
+    "shot": "^1.6.1",
+    "tape": "^4.2.0"
+  },
+  "pre-commit": [
+    "test",
+    "coverage"
+  ]
 }
