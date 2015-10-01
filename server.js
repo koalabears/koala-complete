@@ -18,9 +18,9 @@ var Server = (function() {
       res.writeHead(200, {"Content-Type":"text/html"});
       res.end(index.toString());
     } else if (url.match(/^(\/find\/:)/)){
-      wordSearchCatch(req, res);
-    } else if (url.match(/^(\/findWords\/:)/)) {
       findWords(req, res);
+    } else if (url.match(/^(\/findWords\/:)/)) {
+      wordSearchCatch(req, res);
     } else {
       console.log("!")
       serveFromPublic(req, res);
@@ -57,17 +57,18 @@ var Server = (function() {
   function wordSearchCatch(req, res){
     // var queryCharNum = 7;
     res.writeHead(200, {"Content-Type":"text/plain"});
-    var name = splitByColon(req.url);
+    var def = splitByColon(req.url);
     //console.log(name);
     // var responseContent = someBackendFunction(name)
-    res.end(name);
+    console.log("returning: " + def);
+    res.end(def);
   }
 
 //findWords - find and return definition of word.
   function findWords (req, res) {
     res.writeHead(200, {"Content-Type" : "text/plain"});
-    var def = splitByColon(req.url);
-    res.end(def);
+    var name = splitByColon(req.url);
+    res.end(name);
   }
 
 
