@@ -1,6 +1,6 @@
 var Server = (function() {
   var http = require('http');
-  // var api = require("./apiQuery");
+  var worknikAPI = require("./apiQuery");
   var port= process.env.PORT || 3000;
   // var auto = require('./main.js');
   var fs = require('fs');
@@ -21,7 +21,7 @@ var Server = (function() {
     } else if (url.match(/^(\/findWords\/:)/)) {
       wordSearchCatch(req, res);
     } else {
-      console.log("!")
+      console.log("!");
       serveFromPublic(req, res);
     }
   }
@@ -58,16 +58,28 @@ var Server = (function() {
     res.writeHead(200, {"Content-Type":"text/plain"});
     var def = splitByColon(req.url);
     //console.log(name);
+
+    //def = 3 letters
+    // use it to get an aray of strings (use nelsons function)
+    // put the array into res.end()!
+
     // var responseContent = someBackendFunction(name)
     console.log("returning: " + def);
+
     res.end(def);
+
+
   }
 
 //findWords - find and return definition of word.
   function findWords (req, res) {
     res.writeHead(200, {"Content-Type" : "text/plain"});
     var name = splitByColon(req.url);
-    res.end(name);
+    worknikAPI(name, function(definition){
+      //response.end(definition);
+      console.log(definition);
+      res.end(definition);
+    });
   }
 
 
@@ -92,13 +104,12 @@ var Server = (function() {
 
     console.log('node http server listening on http://localhost:' + port);
 
-    // api("hello");
-  }
 
+}
   return {
     startServer: startServer,
     handler: handler
   };
-}());
 
+}());
 module.exports = Server; //the function that we want to be exported when we call require('server');
