@@ -1,7 +1,7 @@
 var shot = require('shot');
 var test = require('tape');
 var server = require('../../server.js');
-
+var worknikAPI = require("../../apiQuery");
 
 test("server returns the home page", function (t){
   var req ={
@@ -59,13 +59,24 @@ test("testing non-existent file in ./test", function(t){
 });
 
 
-test("testing functionality of findWords", function(t){
+test("testing functionality of findWords - word with a definition", function(t){
+  var req = {
+    method: "GET",
+    url: '/find/:apple'
+  };
+  shot.inject(server.handler, req, function(res){
+    t.equal(res.statusCode, 200, 'findWords works');
+    t.end();
+  });
+});
+
+test("testing functionality of findWords - no definition", function(t){
   var req = {
     method: "GET",
     url: '/find/:carrie'
   };
   shot.inject(server.handler, req, function(res){
-    t.equal(res.payload, 'carrie', 'findWords works');
+    t.equal(res.statusCode, 200, 'findWords works');
     t.end();
   });
 });
