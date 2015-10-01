@@ -14,8 +14,8 @@ var worknikAPI = function(word){
     res.setEncoding('utf8');
     var body = "";
     res.on('data', function(chunk) {
-    console.log(chunk);
-    body += chunk;
+      console.log(chunk);
+      body += chunk;
     });
     res.on('end', function() {
       console.log(body);

@@ -37,7 +37,7 @@ setTimeout(function(event) {
   });
 
   test('correct query created', function(assert) {
-    sendButton
+    sendButton.dispatchEvent(new Event('click'));
   });
 
   // test('clicking send gets status code 200 response', function(assert) {
