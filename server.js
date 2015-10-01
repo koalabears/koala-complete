@@ -1,4 +1,4 @@
-var Server = (function() {
+var server = (function() {
   var http = require('http');
   var worknikAPI = require("./apiQuery");
   var port= process.env.PORT || 3000;
@@ -27,15 +27,14 @@ var Server = (function() {
   });
 
 
-
   function handler(req,res){
     var url = req.url;
     console.log("req.url:", url);
-    if (url.match(/^(\/test)/)) {
-      serveTest(req, res);
-    } else if (url.length === 1){
+    if (url.length === 1){
       res.writeHead(200, {"Content-Type":"text/html"});
       res.end(index.toString());
+    } else if (url.match(/^(\/test)/)) {
+      serveTest(req, res);
     } else if (url.match(/^(\/find\/:)/)){
       findWords(req, res);
     } else if (url.match(/^(\/findWords\/:)/)) {
@@ -84,7 +83,6 @@ var Server = (function() {
     // put the array into res.end()!
 
     var findWord = function (word, words, callback) {
-    // who wants to volunteer to implement the method?
       var found = [];
       for (var i = 0; i < words.length; i++) {
         if (words[i].search(word) === 0) {
@@ -105,11 +103,10 @@ var Server = (function() {
   function findWords (req, res) {
     res.writeHead(200, {"Content-Type" : "text/plain"});
     var name = splitByColon(req.url);
-
-    worknikAPI(name, function(definition){
-      console.log("xxx" + definition);
-      res.end(definition);
-    });
+    // worknikAPI(name, function(definition){
+    //   res.end(definition);
+    // });
+    res.end(name);
   }
 
 
@@ -129,17 +126,16 @@ var Server = (function() {
       res.end("error: " + req.url + " not found");
     }
   }
-  function startServer() {
-    http.createServer(handler).listen(port);
-
-    console.log('node http server listening on http://localhost:' + port);
-
-
-}
+//   function startServer() {
+//     http.createServer(handler).listen(port);
+//
+//     console.log('node http server listening on http://localhost:' + port);
+//
+//
+// }
   return {
-    startServer: startServer,
     handler: handler
   };
 
 }());
-module.exports = Server; //the function that we want to be exported when we call require('server');
+module.exports = server; //the function that we want to be exported when we call require('server');
