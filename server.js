@@ -1,6 +1,6 @@
 var Server = (function() {
   var http = require('http');
-  // var api = require("./apiQuery");
+  var worknikAPI = require("./apiQuery");
   var port= process.env.PORT || 3000;
   // var auto = require('./main.js');
   var fs = require('fs');
@@ -21,7 +21,7 @@ var Server = (function() {
     } else if (url.match(/^(\/findWords\/:)/)) {
       wordSearchCatch(req, res);
     } else {
-      console.log("!")
+      console.log("!");
       serveFromPublic(req, res);
     }
   }
@@ -92,13 +92,12 @@ var Server = (function() {
 
     console.log('node http server listening on http://localhost:' + port);
 
-    // api("hello");
-  }
 
+}
   return {
     startServer: startServer,
     handler: handler
   };
-}());
 
+}());
 module.exports = Server; //the function that we want to be exported when we call require('server');
