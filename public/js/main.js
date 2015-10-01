@@ -21,8 +21,8 @@ var front = (function() {
     var req = new XMLHttpRequest();
     req.open('GET', query);
     req.onreadystatechange = function() {
-      if (req.readystate === 4 && req.status === 200) {
-        console.log(req.payload);
+      if (req.readyState === 4 && req.status === 200) {
+        console.log(req.responseText);
       }
     }
     req.send();
@@ -31,7 +31,7 @@ var front = (function() {
   });
 
   return {
-    requestState : requestState;
+    requestState : requestState,
     findWordsQuery: findWordsQuery
   };
 }());
