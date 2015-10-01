@@ -1,6 +1,6 @@
 var Server = (function() {
   var http = require('http');
-  var api = require("./apiQuery");
+  // var api = require("./apiQuery");
   var port= process.env.PORT || 3000;
   // var auto = require('./main.js');
   var fs = require('fs');
@@ -20,8 +20,19 @@ var Server = (function() {
     } else if (url.match(/^(\/find\/:)/)){
       wordSearchCatch(req, res);
     } else {
-      res.writeHead(404, {"Content-Type":"text/javascript"});
-      res.end("error: " + req.url + " not found");
+      console.log("!")
+      serveFromPublic(req, res);
+    }
+  }
+
+  function serveFromPublic(req, res) {
+    var url = req.url;
+    var type = url.split('.')[1];
+    switch (type) {
+      case 'js' :
+      res.writeHead(200, {"Content-Type":"text/javascript"});
+      out = fs.readFileSync(__dirname + '/public/js' + url);
+      res.end(out.toString());
     }
   }
 
@@ -55,7 +66,7 @@ var Server = (function() {
 
     console.log('node http server listening on http://localhost:' + port);
 
-    api("hello");
+    // api("hello");
   }
 
   return {
