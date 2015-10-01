@@ -1,10 +1,14 @@
 var http = require('http');
+var env = require('env2')('./config.env');
+// console.log(process.env.api_key);
+// var key = process.env.api_key;
 
 var worknikAPI = function(word, callback){
   var options = {
     hostname: "api.wordnik.com",
     port: 80,
-    path: "/v4/word.json/" + word + "/definitions?limit=1&includeRelated=true&sourceDictionaries=ahd&useCanonical=false&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5",
+    //path: "/v4/word.json/" + word + "/definitions?limit=1&includeRelated=true&sourceDictionaries=all&useCanonical=false&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5",
+    path: "/v4/word.json/" + word + "/definitions?limit=1&includeRelated=true&sourceDictionaries=all&useCanonical=false&includeTags=false&api_key=" + process.env.api_key,
     method: "GET"
   };
 
@@ -19,7 +23,7 @@ var worknikAPI = function(word, callback){
     res.on('end', function() {
       var newBody = JSON.parse(body);
       //console.log("this is from apiQuery.js", newBody[0].text);
-      console.log("emmition finished!");
+      console.log("emission finished!");
       console.log(newBody);
       if (newBody && newBody[0]) {
        def = newBody[0].text;
