@@ -58,16 +58,28 @@ var Server = (function() {
     res.writeHead(200, {"Content-Type":"text/plain"});
     var def = splitByColon(req.url);
     //console.log(name);
+
+    //def = 3 letters
+    // use it to get an aray of strings (use nelsons function)
+    // put the array into res.end()!
+
     // var responseContent = someBackendFunction(name)
     console.log("returning: " + def);
+
     res.end(def);
+
+
   }
 
 //findWords - find and return definition of word.
   function findWords (req, res) {
     res.writeHead(200, {"Content-Type" : "text/plain"});
     var name = splitByColon(req.url);
-    res.end(name);
+    worknikAPI(name, function(definition){
+      //response.end(definition);
+      console.log(definition);
+      res.end(definition);
+    });
   }
 
 

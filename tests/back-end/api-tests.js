@@ -1,7 +1,7 @@
 var shot = require('shot');
 var test = require('tape');
 var worknikAPI = require('../../apiQuery.js');
-console.log(worknikAPI);
+
 
 test("Testing if the correct definition is being returned", function(t){
   var expected = "Used to greet someone, answer the telephone, or express surprise.";
