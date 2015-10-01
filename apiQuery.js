@@ -13,6 +13,7 @@ var worknikAPI = function(word, callback){
     res.setEncoding('utf8');
     var body = "";
     res.on('data', function(chunk) {
+
       body += chunk;
     });
     res.on('end', function() {
