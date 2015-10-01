@@ -8,6 +8,26 @@ var Server = (function() {
 
   var index = fs.readFileSync(__dirname + '/public/html/index.html');
 
+  var wordList;
+
+  var getWords = function (callback) {
+    if (!callback || typeof callback !== 'function') {
+      return new Error('callback argument MUST be a function');
+    }
+    var filename = __dirname + '/words.txt';
+    fs.readFile(filename, 'utf8', function (err, data) {
+      var words = data.split('\n');
+      return callback(err, words);
+    });
+  };
+
+  getWords(function(err, acWords) {
+    console.log(acWords[0]);
+    wordList = acWords;
+  });
+
+
+
   function handler(req,res){
     var url = req.url;
     console.log("req.url:", url);
@@ -56,18 +76,28 @@ var Server = (function() {
   function wordSearchCatch(req, res){
     // var queryCharNum = 7;
     res.writeHead(200, {"Content-Type":"text/plain"});
-    var def = splitByColon(req.url);
+    var searchTerm = splitByColon(req.url);
     //console.log(name);
 
     //def = 3 letters
     // use it to get an aray of strings (use nelsons function)
     // put the array into res.end()!
 
-    // var responseContent = someBackendFunction(name)
-    console.log("returning: " + def);
+    var findWord = function (word, words, callback) {
+    // who wants to volunteer to implement the method?
+      var found = [];
+      for (var i = 0; i < words.length; i++) {
+        if (words[i].search(word) === 0) {
+          found.push(words[i]);
+        }
+      }
+      return callback(found);
+    };
 
-    res.end(def);
-
+    findWord(searchTerm, wordList, function(found) {
+      console.log("seach term in find word callback: " + found);
+      res.end(found.toString());
+    });
 
   }
 
@@ -75,9 +105,9 @@ var Server = (function() {
   function findWords (req, res) {
     res.writeHead(200, {"Content-Type" : "text/plain"});
     var name = splitByColon(req.url);
+
     worknikAPI(name, function(definition){
-      //response.end(definition);
-      console.log(definition);
+      console.log("xxx" + definition);
       res.end(definition);
     });
   }
