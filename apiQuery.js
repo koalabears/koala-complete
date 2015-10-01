@@ -3,7 +3,7 @@ var env = require('env2')('./config.env');
 // console.log(process.env.api_key);
 // var key = process.env.api_key;
 
-var worknikAPI = function(word, callback){
+var worknikAPI = function(word, callback) {
   var options = {
     hostname: "api.wordnik.com",
     port: 80,
@@ -17,28 +17,29 @@ var worknikAPI = function(word, callback){
     console.log('STATUS: ' + res.statusCode);
     res.setEncoding('utf8');
     var body = "";
+
     res.on('data', function(chunk) {
       body += chunk;
     });
+
     res.on('end', function() {
       var newBody = JSON.parse(body);
-      //console.log("this is from apiQuery.js", newBody[0].text);
-      console.log("emission finished!");
-      console.log(newBody);
+
       if (newBody && newBody[0]) {
-       def = newBody[0].text;
-       console.log("*********", def);
-     } else {
-       def = '';
-     }
+        def = newBody[0].text;
+        console.log(def);
+      }
+      else {
+        console.log('No definition found. Please check your spelling and try again.');
+      }
       callback(def);
     });
   });
 
-  req.on('error', function(e) {
-    console.log('problem with request: ' + e.message);
-  });
-  // write data to request body
+  // req.on('error', function(e) {
+  //   console.log('problem with request: ' + e.message);
+  // });
+  // // write data to request body
   req.write("");
   req.end();
 
