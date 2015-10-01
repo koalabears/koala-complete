@@ -34,7 +34,22 @@ var front = (function() {
   });
 
   input.addEventListener('keyup', function(e) {
+    if (e.keyCode === 13) {
+      var query = dictionaryQuery(words[0]);
+      var req = new XMLHttpRequest();
+      req.open('GET', query);
+      req.onreadystatechange = function() {
+        if (req.readyState === 4 && req.status === 200) {
+          console.log(req.responseText);
+        }
+      }
+      req.send();
+    }
     var inputTxt = input.value;
+    words = testWords.filter(function(word) {
+      return (word.search(input.value) === 0);
+    });
+    printWords(words);
     if (lastLength === 2 && inputTxt.length === 3) {
       var query = wordsQuery(input.value);
       var req = new XMLHttpRequest();
@@ -48,6 +63,35 @@ var front = (function() {
     }
     lastLength = inputTxt.length;
   })
+
+  var printWords = function(words) {
+    var html = "<ul>";
+    var i = 0;
+    words.forEach(function(word) {
+      html += !i ? "<li>*" : "<li>";
+      html += word + "</li>";
+      i++;
+    });
+    html += "</ul>";
+    document.getElementById('word-list').innerHTML = html;
+  }
+
+  var testWords = [
+    "hello",
+    "how",
+    "are",
+    "you",
+    "mellon",
+    "marie",
+    "tomato",
+    "eoin",
+    "jack",
+    "naaz",
+    "justin"
+  ];
+
+  var words = testWords;
+  printWords(words);
 
   return {
     requestState : requestState,

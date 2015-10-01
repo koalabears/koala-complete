@@ -36,9 +36,9 @@ setTimeout(function(event) {
     assert.equal(f(":!!...abc"), expected, "punctuation handled");
   });
 
-  test('correct query created', function(assert) {
-    sendButton.dispatchEvent(new Event('click'));
-  });
+  // test('correct query created', function(assert) {
+  //   sendButton.dispatchEvent(new Event('click'));
+  // });
 
   // test('clicking send gets status code 200 response', function(assert) {
   //   assert.ok(target.getElementsByTagName('h1')[0], "passed");
