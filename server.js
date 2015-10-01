@@ -33,6 +33,7 @@ var Server = (function() {
       res.writeHead(200, {"Content-Type":"text/javascript"});
       out = fs.readFileSync(__dirname + '/public/js' + url);
       res.end(out.toString());
+      break;
     }
   }
 
