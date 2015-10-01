@@ -62,10 +62,10 @@ test("testing non-existent file in ./test", function(t){
 test("testing functionality of findWords", function(t){
   var req = {
     method: "GET",
-    url: '/find/:apple'
+    url: '/find/:carrie'
   };
   shot.inject(server.handler, req, function(res){
-    t.equal(res.payload, 'apple', 'findWords works');
+    t.equal(res.payload, 'carrie', 'findWords works');
     t.end();
   });
 });
