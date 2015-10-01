@@ -19,6 +19,8 @@ var Server = (function() {
       res.end(index.toString());
     } else if (url.match(/^(\/find\/:)/)){
       wordSearchCatch(req, res);
+    } else if (url.match(/^(\/findWords\/:)/)) {
+      findWords(req, res);
     } else {
       console.log("!")
       serveFromPublic(req, res);
@@ -30,20 +32,44 @@ var Server = (function() {
     var type = url.split('.')[1];
     switch (type) {
       case 'js' :
-      res.writeHead(200, {"Content-Type":"text/javascript"});
-      out = fs.readFileSync(__dirname + '/public/js' + url);
-      res.end(out.toString());
+        res.writeHead(200, {"Content-Type":"text/javascript"});
+        out = fs.readFileSync(__dirname + '/public/js' + url);
+        res.end(out.toString());
+        break;
+      case 'css' :
+        res.writeHead(200, {"Content-Type":"text/css"});
+        out = fs.readFileSync(__dirname + '/public/css' + url);
+        res.end(out.toString());
+        break;
+      case 'html' :
+        res.writeHead(200, {"Content-Type":"text/html"});
+        out = fs.readFileSync(__dirname + '/public/html' + url);
+        res.end(out.toString());
+        break;
     }
   }
 
+  function splitByColon(str) {
+    return str.split(':')[1];
+  }
+
+//Lookup word suggestions
   function wordSearchCatch(req, res){
     // var queryCharNum = 7;
-    console.log(req.url);
     res.writeHead(200, {"Content-Type":"text/plain"});
-    var name = req.url.split(':')[1];
-    console.log(name);
+    var name = splitByColon(req.url);
+    //console.log(name);
+    // var responseContent = someBackendFunction(name)
     res.end(name);
   }
+
+//findWords - find and return definition of word.
+  function findWords (req, res) {
+    res.writeHead(200, {"Content-Type" : "text/plain"});
+    var def = splitByColon(req.url);
+    res.end(def);
+  }
+
 
   function serveTest(req, res) {
     console.log("serveTest called");
