@@ -18,30 +18,30 @@ var front = (function() {
   };
 
   var wordsQuery = function(word) {
-    return "/words/:" + word.replace(/[^\w+]/g, '');
+    return "/findWords/:" + word.replace(/[^\w+]/g, '');
   };
 
   button.addEventListener('click', function() {
-    var query = findWordsQuery(input.value);
+    var query = dictionaryQuery(input.value);
     var req = new XMLHttpRequest();
     req.open('GET', query);
     req.onreadystatechange = function() {
-      if (req.readystate === 4 && req.status === 200) {
-        console.log(req.payload);
+      if (req.readyState === 4 && req.status === 200) {
+        console.log(req.responseText);
       }
     }
     req.send();
   });
 
-  input.addEventListener('keypressed', function(e) {
+  input.addEventListener('keyup', function(e) {
     var inputTxt = input.value;
     if (lastLength === 2 && inputTxt.length === 3) {
       var query = wordsQuery(input.value);
       var req = new XMLHttpRequest();
       req.open('GET', query);
       req.onreadystatechange = function() {
-        if (req.readystate === 4 && req.status === 200) {
-          console.log(req.payload);
+        if (req.readyState === 4 && req.status === 200) {
+          console.log(req.responseText);
         }
       }
       req.send();
@@ -50,8 +50,8 @@ var front = (function() {
   })
 
   return {
-    requestState : requestState;
-    findWordsQuery: findWordsQuery
+    requestState : requestState,
+    findWordsQuery: dictionaryQuery
   };
 }());
 

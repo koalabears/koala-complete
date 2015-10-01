@@ -11,7 +11,6 @@ var Server = (function() {
   function handler(req,res){
     var url = req.url;
     console.log("req.url:", url);
-
     if (url.match(/^(\/test)/)) {
       serveTest(req, res);
     } else if (url.length === 1){
