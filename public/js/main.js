@@ -53,22 +53,24 @@ var front = (function() {
         return (word.search(input.value) === 0);
       });
       printWords(words);
-      if (lastLength === 2 && inputTxt.length === 3) {
+      if (lastLength >= 2 && inputTxt.length !== lastLength) {
         var query = wordsQuery(input.value);
         var req = new XMLHttpRequest();
         req.open('GET', query);
         req.onreadystatechange = function() {
           if (req.readyState === 4 && req.status === 200) {
-            console.log(req.responseText);
+            arr = printWords(req.responseText.split(','));
           }
         }
         req.send();
       }
       lastLength = inputTxt.length;
     }
-  })
+  });
 
-  var printWords = function(words) {
+
+  var printWords = function(words_) {
+    words = words_;
     var html = "<ul>";
     var i = 0;
     words.forEach(function(word) {
@@ -78,7 +80,8 @@ var front = (function() {
     });
     html += "</ul>";
     wordListDiv.innerHTML = html;
-  }
+  };
+
 
   var testWords = [
     "hello",
