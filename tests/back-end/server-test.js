@@ -17,7 +17,7 @@ test("server returns the home page", function (t){
 test("url /find/marie returns marie in payload", function(t){
   var req = {
     method: "GET",
-    url: '/find/:marie'
+    url: '/find/:carrie'
   };
   shot.inject(server.handler, req, function(res){
     t.equal(res.payload, '', 'worked');
