@@ -9,17 +9,21 @@ var worknikAPI = function(word, callback){
   };
 
   var req = http.request(options, function(res) {
+    var def;
     console.log('STATUS: ' + res.statusCode);
     res.setEncoding('utf8');
     var body = "";
     res.on('data', function(chunk) {
-
       body += chunk;
     });
     res.on('end', function() {
       var newBody = JSON.parse(body);
       //console.log("this is from apiQuery.js", newBody[0].text);
-      var def = (newBody[0].text);
+      console.log("emmition finished!");
+      console.log(newBody);
+      if (newBody && newBody[0]) {
+       def = newBody[0].text;
+      }
       callback(def);
     });
   });
