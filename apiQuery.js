@@ -23,7 +23,10 @@ var worknikAPI = function(word, callback){
       console.log(newBody);
       if (newBody && newBody[0]) {
        def = newBody[0].text;
-      }
+       console.log("*********", def);
+     } else {
+       def = '';
+     }
       callback(def);
     });
   });
