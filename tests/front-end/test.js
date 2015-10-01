@@ -1,4 +1,5 @@
 setTimeout(function(event) {
+
   var iframe = document.getElementById('iframe');
   var target =  iframe.contentWindow.document || iframe.contentDocument;
   var inputDiv, inputBox, sendButton, f;
@@ -9,7 +10,6 @@ setTimeout(function(event) {
 
   inputDiv = target.getElementsByClassName('inputDiv')[0];
   test('input elements exist', function(assert) {
-    // assert.ok(target.getElementsByTagName('h1')[0], "passed");
     assert.ok(inputDiv, "inputDiv exists");
     inputBox = inputDiv.getElementsByTagName('input')[0];
     assert.ok(inputBox, "inputBox exists");
@@ -18,7 +18,6 @@ setTimeout(function(event) {
   });
   front = iframe.contentWindow.front;
   test('front-end script exists', function(assert) {
-    // assert.ok(target.getElementsByTagName('h1')[0], "passed");
     assert.ok(front, "script loaded");
   });
 
