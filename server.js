@@ -1,6 +1,6 @@
 var Server = (function() {
   var http = require('http');
-  var api = require("./apiQuery");
+  // var api = require("./apiQuery");
   var port= process.env.PORT || 3000;
   // var auto = require('./main.js');
   var fs = require('fs');
@@ -8,14 +8,17 @@ var Server = (function() {
 
   var index = fs.readFileSync(__dirname + '/public/html/index.html');
 
-  function handler(request,response){
-    var url = request.url;
-    console.log("request.url:", url);
+  function handler(req,res){
+    var url = req.url;
+    console.log("req.url:", url);
+
     if (url.match(/^(\/test)/)) {
-      serveTest(request, response);
+      serveTest(req, res);
     } else if (url.length === 1){
-      response.writeHead(200, {"Content-Type":"text/html"});
-      response.end(index.toString());
+      res.writeHead(200, {"Content-Type":"text/html"});
+      res.end(index.toString());
+    } else if (url.match(/^(\/find\/:)/)){
+      wordSearchCatch(req, res);
     } else {
       console.log("!")
       serveFromPublic(req, res);
@@ -27,11 +30,19 @@ var Server = (function() {
     var type = url.split('.')[1];
     switch (type) {
       case 'js' :
-      response.writeHead(200, {"Content-Type":"text/javascript"});
+      res.writeHead(200, {"Content-Type":"text/javascript"});
       out = fs.readFileSync(__dirname + '/public/js' + url);
-      response.end(index.toString());
+      res.end(out.toString());
     }
+  }
 
+  function wordSearchCatch(req, res){
+    // var queryCharNum = 7;
+    console.log(req.url);
+    res.writeHead(200, {"Content-Type":"text/plain"});
+    var name = req.url.split(':')[1];
+    console.log(name);
+    res.end(name);
   }
 
   function serveTest(req, res) {
@@ -55,7 +66,7 @@ var Server = (function() {
 
     console.log('node http server listening on http://localhost:' + port);
 
-    api("hello");
+    // api("hello");
   }
 
   return {
