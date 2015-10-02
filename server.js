@@ -29,7 +29,7 @@ var server = (function() {
 
   function handler(req,res){
     var url = req.url;
-    console.log("req.url:", url);
+    
     if (url.length === 1){
       res.writeHead(200, {"Content-Type":"text/html"});
       res.end(index.toString());
@@ -40,7 +40,6 @@ var server = (function() {
     } else if (url.match(/^(\/findWords\/:)/)) {
       wordSearchCatch(req, res);
     } else {
-      console.log("!");
       serveFromPublic(req, res);
     }
   }
@@ -73,14 +72,9 @@ var server = (function() {
 
 //Lookup word suggestions
   function wordSearchCatch(req, res){
-    // var queryCharNum = 7;
+
     res.writeHead(200, {"Content-Type":"text/plain"});
     var searchTerm = splitByColon(req.url);
-    //console.log(name);
-
-    //def = 3 letters
-    // use it to get an aray of strings (use nelsons function)
-    // put the array into res.end()!
 
     var findWord = function (word, words, callback) {
       var found = [];
@@ -93,7 +87,6 @@ var server = (function() {
     };
 
     findWord(searchTerm, wordList, function(found) {
-      console.log("seach term in find word callback: " + found);
       res.end(found.toString());
     });
 
@@ -106,15 +99,12 @@ var server = (function() {
 
     worknikAPI(name, function(definition){
       res.end(definition);
-      console.log('xxxxxxxxxxxxxxxxxxx' + definition);
 
     });
-    // res.end(name);
   }
 
 
   function serveTest(req, res) {
-    console.log("serveTest called");
     var test  = fs.readFileSync(__dirname + '/tests/front-end/test.html');
     var testjs  = fs.readFileSync(__dirname + '/tests/front-end/test.js');
     if (req.url === "/test.html/"){
@@ -129,13 +119,6 @@ var server = (function() {
       res.end("error: " + req.url + " not found");
     }
   }
-//   function startServer() {
-//     http.createServer(handler).listen(port);
-//
-//     console.log('node http server listening on http://localhost:' + port);
-//
-//
-// }
   return {
     handler: handler
   };
