@@ -54,11 +54,11 @@ var server = (function() {
         out = fs.readFileSync(__dirname + '/public/js' + url);
         res.end(out.toString());
         break;
-      case 'css' :
-        res.writeHead(200, {"Content-Type":"text/css"});
-        out = fs.readFileSync(__dirname + '/public/css' + url);
-        res.end(out.toString());
-        break;
+      // case 'css' :
+      //   res.writeHead(200, {"Content-Type":"text/css"});
+      //   out = fs.readFileSync(__dirname + '/public/css' + url);
+      //   res.end(out.toString());
+      //   break;
       case 'html' :
         res.writeHead(200, {"Content-Type":"text/html"});
         out = fs.readFileSync(__dirname + '/public/html' + url);
@@ -103,10 +103,13 @@ var server = (function() {
   function findWords (req, res) {
     res.writeHead(200, {"Content-Type" : "text/plain"});
     var name = splitByColon(req.url);
-    // worknikAPI(name, function(definition){
-    //   res.end(definition);
-    // });
-    res.end(name);
+
+    worknikAPI(name, function(definition){
+      res.end(definition);
+      console.log('xxxxxxxxxxxxxxxxxxx' + definition);
+
+    });
+    // res.end(name);
   }
 
 

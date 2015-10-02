@@ -27,10 +27,15 @@ var worknikAPI = function(word, callback) {
 
       if (newBody && newBody[0]) {
         def = newBody[0].text;
+        console.log(newBody);
+        console.log(newBody[0]);
         console.log(def);
+        console.log(typeof def);
+        console.log('asdfghfgjyhtrsfadZX + ' + def);
       }
       else {
-        console.log('No definition found. Please check your spelling and try again.');
+        var msg = 'MESSAGE: No definition found. Please check your spelling and try again.';
+        def = msg;
       }
       callback(def);
     });
