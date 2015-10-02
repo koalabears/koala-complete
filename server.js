@@ -48,6 +48,7 @@ var Server = (function() {
 
   function serveFromPublic(req, res) {
     var url = req.url;
+    console.log(url);
     var type = url.split('.')[1];
     switch (type) {
       case 'js' :
@@ -57,7 +58,7 @@ var Server = (function() {
         break;
       case 'css' :
         res.writeHead(200, {"Content-Type":"text/css"});
-        out = fs.readFileSync(__dirname + '/public/css' + url);
+        out = fs.readFileSync(__dirname + '/public/stylesheets' + url);
         res.end(out.toString());
         break;
       case 'html' :
