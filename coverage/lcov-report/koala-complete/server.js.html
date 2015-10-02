@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for koala-complete/server.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../prettify.css">
+    <link rel="stylesheet" href="../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">koala-complete/server.js</span></h1>
+    <h2>
+        Statements: <span class="metric">93.83% <small>(76 / 81)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">91.3% <small>(21 / 23)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(13 / 13)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">93.83% <small>(76 / 81)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">koala-complete/</a> &#187; server.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">9</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">235887</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var server = (function() {
+  var http = require('http');
+  var worknikAPI = require("./apiQuery");
+  var port= process.env.PORT || 3000;
+  // var auto = require('./main.js');
+  var fs = require('fs');
+&nbsp;
+&nbsp;
+  var index = fs.readFileSync(__dirname + '/public/html/index.html');
+&nbsp;
+  var wordList;
+&nbsp;
+  var getWords = function (callback) {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (!callback || typeof callback !== 'function') {
+<span class="cstat-no" title="statement not covered" >      return new Error('callback argument MUST be a function');</span>
+    }
+    var filename = __dirname + '/words.txt';
+    fs.readFile(filename, 'utf8', function (err, data) {
+      var words = data.split('\n');
+      return callback(err, words);
+    });
+  };
+&nbsp;
+  getWords(function(err, acWords) {
+    console.log(acWords[0]);
+    wordList = acWords;
+  });
+&nbsp;
+&nbsp;
+  function handler(req,res){
+    var url = req.url;
+    console.log("req.url:", url);
+    if (url.length === 1){
+      res.writeHead(200, {"Content-Type":"text/html"});
+      res.end(index.toString());
+    } else if (url.match(/^(\/test)/)) {
+      serveTest(req, res);
+    } else if (url.match(/^(\/find\/:)/)){
+      findWords(req, res);
+    } else if (url.match(/^(\/findWords\/:)/)) {
+      wordSearchCatch(req, res);
+    } else {
+      console.log("!");
+      serveFromPublic(req, res);
+    }
+  }
+&nbsp;
+  function serveFromPublic(req, res) {
+    var url = req.url;
+    var type = url.split('.')[1];
+    switch (type) {
+      case 'js' :
+        res.writeHead(200, {"Content-Type":"text/javascript"});
+        out = fs.readFileSync(__dirname + '/public/js' + url);
+        res.end(out.toString());
+        break;
+<span class="branch-1 cbranch-no" title="branch not covered" >      case 'css' :</span>
+<span class="cstat-no" title="statement not covered" >        res.writeHead(200, {"Content-Type":"text/css"});</span>
+<span class="cstat-no" title="statement not covered" >        out = fs.readFileSync(__dirname + '/public/stylesheets' + url);</span>
+<span class="cstat-no" title="statement not covered" >        res.end(out.toString());</span>
+<span class="cstat-no" title="statement not covered" >        break;</span>
+      case 'html' :
+        res.writeHead(200, {"Content-Type":"text/html"});
+        out = fs.readFileSync(__dirname + '/public/html' + url);
+        res.end(out.toString());
+        break;
+    }
+  }
+&nbsp;
+  function splitByColon(str) {
+    return str.split(':')[1];
+  }
+&nbsp;
+//Lookup word suggestions
+  function wordSearchCatch(req, res){
+    // var queryCharNum = 7;
+    res.writeHead(200, {"Content-Type":"text/plain"});
+    var searchTerm = splitByColon(req.url);
+    //console.log(name);
+&nbsp;
+    //def = 3 letters
+    // use it to get an aray of strings (use nelsons function)
+    // put the array into res.end()!
+&nbsp;
+    var findWord = function (word, words, callback) {
+      var found = [];
+      for (var i = 0; i &lt; words.length; i++) {
+        if (words[i].search(word) === 0) {
+          found.push(words[i]);
+        }
+      }
+      return callback(found);
+    };
+&nbsp;
+    findWord(searchTerm, wordList, function(found) {
+      console.log("seach term in find word callback: " + found);
+      res.end(found.toString());
+    });
+&nbsp;
+  }
+&nbsp;
+//findWords - find and return definition of word.
+  function findWords (req, res) {
+    res.writeHead(200, {"Content-Type" : "text/plain"});
+    var name = splitByColon(req.url);
+&nbsp;
+    worknikAPI(name, function(definition){
+      res.end(definition);
+      console.log('xxxxxxxxxxxxxxxxxxx' + definition);
+&nbsp;
+    });
+    // res.end(name);
+  }
+&nbsp;
+&nbsp;
+  function serveTest(req, res) {
+    console.log("serveTest called");
+    var test  = fs.readFileSync(__dirname + '/tests/front-end/test.html');
+    var testjs  = fs.readFileSync(__dirname + '/tests/front-end/test.js');
+    if (req.url === "/test.html/"){
+      // console.log("test.html served");
+      res.writeHead(200, {"Content-Type":"text/html"});
+      res.end(test.toString());
+    } else if (req.url === "/test.html/test.js"){
+      res.writeHead(200, {"Content-Type":"text/javascript"});
+      res.end(testjs.toString());
+    } else {
+      res.writeHead(404, {"Content-Type":"text/javascript"});
+      res.end("error: " + req.url + " not found");
+    }
+  }
+//   function startServer() {
+//     http.createServer(handler).listen(port);
+//
+//     console.log('node http server listening on http://localhost:' + port);
+//
+//
+// }
+  return {
+    handler: handler
+  };
+&nbsp;
+}());
+module.exports = server; //the function that we want to be exported when we call require('server');
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Oct 02 2015 10:24:25 GMT+0100 (BST)</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

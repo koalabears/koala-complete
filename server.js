@@ -54,11 +54,11 @@ var server = (function() {
         out = fs.readFileSync(__dirname + '/public/js' + url);
         res.end(out.toString());
         break;
-      // case 'css' :
-      //   res.writeHead(200, {"Content-Type":"text/css"});
-      //   out = fs.readFileSync(__dirname + '/public/css' + url);
-      //   res.end(out.toString());
-      //   break;
+      case 'css' :
+        res.writeHead(200, {"Content-Type":"text/css"});
+        out = fs.readFileSync(__dirname + '/public/stylesheets' + url);
+        res.end(out.toString());
+        break;
       case 'html' :
         res.writeHead(200, {"Content-Type":"text/html"});
         out = fs.readFileSync(__dirname + '/public/html' + url);
