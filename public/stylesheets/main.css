@@ -1,3 +1,37 @@
+body {
+  text-align: center;
+  font-family: 'Segoe UI', 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+  color: white;
+  background-color: black;
+  overflow-y: hidden;
+}
+
+h1 {
+  font-family: 'Lobster', Georgia, Times, serif;
+  font-size: 3.7em;
+}
+
 ul {
+
   list-style-type: none;
+  font-size: 1.5em;
+  height: 2.2em;
+  padding: 0;
+}
+
+#definition {
+  margin: 2rem;
+}
+
+#word-list {
+  background-image: linear-gradient(to bottom, transparent, black);
+}
+
+#fader {
+  position: absolute;
+  top: 50vh;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+  background-image: linear-gradient(to bottom, transparent, black);
 }
