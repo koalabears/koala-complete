@@ -56,7 +56,7 @@ var server = (function() {
         break;
       case 'css' :
         res.writeHead(200, {"Content-Type":"text/css"});
-        out = fs.readFileSync(__dirname + '/public/css' + url);
+        out = fs.readFileSync(__dirname + '/public/stylesheets' + url);
         res.end(out.toString());
         break;
       case 'html' :
