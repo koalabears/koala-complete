@@ -51,7 +51,7 @@ var front = (function() {
     var html = "<ul>";
     var i = 0;
     words.forEach(function(word) {
-      html += !i ? "<li>*" : "<li>";
+      html += !i ? "<li>" : "<li>";
       html += word + "</li>";
       i++;
     });
