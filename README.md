@@ -1,8 +1,6 @@
 # Setup
+Access our site here: https://shielded-dusk-6658.herokuapp.com/
 
- 1. Clone this repo
- 2. run `npm install`
- 3. run `node index` or `npm run start``
 
 # node-js-getting-started
 
