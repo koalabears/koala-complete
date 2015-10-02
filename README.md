@@ -1,3 +1,9 @@
+# Setup
+
+ 1. Clone this repo
+ 2. run `npm install`
+ 3. run `node index` or `npm run start``
+
 # node-js-getting-started
 
 A barebones Node.js app using [Express 4](http://expressjs.com/).
