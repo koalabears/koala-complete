@@ -6,7 +6,7 @@
 
 ## koala-complete
 
-Third in the 'koalabears' series of 'koalabears' projects, koala-complete makes finding words in the english dictionary fast and fun
+Third in the 'koalabears' series of 'koalabears' projects, koala-complete makes finding words in the english dictionary fast and fun!
 
 Access our app here: https://shielded-dusk-6658.herokuapp.com/
 
