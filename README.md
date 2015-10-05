@@ -1,4 +1,4 @@
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 [![Build Status](https://travis-ci.org/koalabears/koala-complete.svg?branch=master)](https://travis-ci.org/koalabears/koala-complete)
 [![Code Climate](https://codeclimate.com/github/koalabears/koala-complete/badges/gpa.svg)](https://codeclimate.com/github/koalabears/koala-complete)
 [![Test Coverage](https://codeclimate.com/github/koalabears/koala-complete/badges/coverage.svg)](https://codeclimate.com/github/koalabears/koala-complete/coverage)
@@ -6,7 +6,7 @@
 
 ## koala-complete
 
-Third in the 'koalabears' series of 'koalabears' projects, koala-complete makes finding words in the english dictionary fast and fun
+Third in the 'koalabears' series of 'koalabears' projects, koala-complete makes finding words in the english dictionary fast and fun!
 
 Access our app here: https://shielded-dusk-6658.herokuapp.com/
 
