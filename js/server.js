@@ -6,7 +6,7 @@ var server = (function() {
   var fs = require('fs');
 
 
-  var index = fs.readFileSync(__dirname + '/public/html/index.html');
+  var index = fs.readFileSync(__dirname + '/../public/html/index.html');
 
   var wordList;
 
@@ -14,7 +14,7 @@ var server = (function() {
     if (!callback || typeof callback !== 'function') {
       return new Error('callback argument MUST be a function');
     }
-    var filename = __dirname + '/words.txt';
+    var filename = __dirname + '/../words.txt';
     fs.readFile(filename, 'utf8', function (err, data) {
       var words = data.split('\n');
       return callback(err, words);
@@ -47,21 +47,22 @@ var server = (function() {
 
   function serveFromPublic(req, res) {
     var url = req.url;
+    var root = '/../public/';
     var type = url.split('.')[1];
     switch (type) {
       case 'js' :
         res.writeHead(200, {"Content-Type":"text/javascript"});
-        out = fs.readFileSync(__dirname + '/public/js' + url);
+        out = fs.readFileSync(__dirname + root + 'js' + url);
         res.end(out.toString());
         break;
       case 'css' :
         res.writeHead(200, {"Content-Type":"text/css"});
-        out = fs.readFileSync(__dirname + '/public/stylesheets' + url);
+        out = fs.readFileSync(__dirname + root + 'stylesheets' + url);
         res.end(out.toString());
         break;
       case 'html' :
         res.writeHead(200, {"Content-Type":"text/html"});
-        out = fs.readFileSync(__dirname + '/public/html' + url);
+        out = fs.readFileSync(__dirname + root + 'html' + url);
         res.end(out.toString());
         break;
     }
@@ -106,8 +107,8 @@ var server = (function() {
 
 
   function serveTest(req, res) {
-    var test  = fs.readFileSync(__dirname + '/tests/front-end/test.html');
-    var testjs  = fs.readFileSync(__dirname + '/tests/front-end/test.js');
+    var test  = fs.readFileSync(__dirname + '/../tests/front-end/test.html');
+    var testjs  = fs.readFileSync(__dirname + '/../tests/front-end/test.js');
     if (req.url === "/test.html/"){
       // console.log("test.html served");
       res.writeHead(200, {"Content-Type":"text/html"});

@@ -11,7 +11,6 @@ var worknikAPI = function(word, callback) {
 
   var req = http.request(options, function(res) {
     var def;
-    console.log('STATUS: ' + res.statusCode);
     res.setEncoding('utf8');
     var body = "";
 
@@ -24,11 +23,6 @@ var worknikAPI = function(word, callback) {
 
       if (newBody && newBody[0]) {
         def = newBody[0].text;
-        console.log(newBody);
-        console.log(newBody[0]);
-        console.log(def);
-        console.log(typeof def);
-        console.log('asdfghfgjyhtrsfadZX + ' + def);
       }
       else {
         var msg = 'MESSAGE: No definition found. Please check your spelling and try again.';

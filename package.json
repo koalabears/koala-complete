@@ -7,7 +7,7 @@
     "test": "./node_modules/.bin/tape ./tests/back-end/*",
     "api-test": "./node_modules/.bin/tape ./tests/back-end/*",
     "coverage": "istanbul cover -x **/tests/** tape ./tests/back-end/*",
-    "start": "node index.js",
+    "start": "node js/index.js",
     "codeclimate": "CODECLIMATE_REPO_TOKEN=467a1f1abf5d146cc384cf7567718ac7ab13f51f47f63dfb7798b5b1ba43136a codeclimate-test-reporter < ./coverage/lcov.info"
   },
   "dependencies": {
