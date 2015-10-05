@@ -29,7 +29,8 @@ var server = (function() {
 
   function handler(req,res){
     var url = req.url;
-    
+    console.log("URL: " + url);
+
     if (url.length === 1){
       res.writeHead(200, {"Content-Type":"text/html"});
       res.end(index.toString());
