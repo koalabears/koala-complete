@@ -1,6 +1,6 @@
 var shot = require('shot');
 var test = require('tape');
-var worknikAPI = require('../../apiQuery.js');
+var worknikAPI = require('../../js/apiQuery.js');
 
 
 test("Testing if the correct definition is being returned", function(t){

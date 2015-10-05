@@ -1,7 +1,7 @@
 var shot = require('shot');
 var test = require('tape');
-var server = require('../../server.js');
-var worknikAPI = require("../../apiQuery");
+var server = require('../../js/server.js');
+var worknikAPI = require("../../js/apiQuery");
 
 test("server returns the home page", function (t){
   var req ={
